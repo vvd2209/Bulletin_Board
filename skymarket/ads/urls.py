@@ -1,7 +1,5 @@
-from django.urls import include, path, re_path
-from djoser.views import UserViewSet
+from django.urls import path
 from rest_framework import routers
-from rest_framework.routers import SimpleRouter
 
 from ads.views import AdViewSet, AdListAPIView, AdCreateAPIView, AdRetrieveAPIView, AdUpdateAPIView, AdDestroyAPIView, CommentViewSet
 

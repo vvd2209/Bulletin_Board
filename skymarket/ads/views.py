@@ -44,11 +44,10 @@ class AdViewSet(viewsets.ModelViewSet):
 
 
 class AdListAPIView(generics.ListAPIView):
-    """ Список всех объявлений """
+    """ Контроллер Список всех объявлений """
     queryset = Ad.objects.all()
     template_name = 'ads/ad_list.html'
     serializer_class = AdSerializer
-    #permission_classes = [IsAuthenticated]
     pagination_class = ListPaginator
 
     extra_context = {
@@ -61,7 +60,7 @@ class AdListAPIView(generics.ListAPIView):
 
 
 class AdCreateAPIView(generics.CreateAPIView):
-    """ Создание объявления """
+    """ Контроллер Создание объявления """
     queryset = Ad.objects.all()
     serializer_class = AdSerializer
     permission_classes = [IsAuthenticated, IsAdmin | IsSelfUser],
@@ -86,21 +85,21 @@ class AdCreateAPIView(generics.CreateAPIView):
 
 
 class AdRetrieveAPIView(generics.RetrieveAPIView):
-    """ Просмотр объявления """
+    """ Контроллер Просмотр объявления """
     queryset = Ad.objects.all()
     serializer_class = AdSerializer
     permission_classes = [IsAuthenticated, IsSelfUser | IsOwner | IsAdmin]
 
 
 class AdUpdateAPIView(generics.UpdateAPIView):
-    """ Изменение объявления """
+    """ Контроллер Изменение объявления """
     queryset = Ad.objects.all()
     serializer_class = AdSerializer
     permission_classes = [IsAuthenticated, IsOwner | IsAdmin],
 
 
 class AdDestroyAPIView(generics.DestroyAPIView):
-    """ Удаление объявления """
+    """ Контроллер Удаление объявления """
     queryset = Ad.objects.all()
     permission_classes = [IsAuthenticated, IsOwner | IsAdmin],
 

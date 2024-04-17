@@ -9,14 +9,13 @@ NULLABLE = {'blank': True, 'null': True}
 
 
 class UserRoles(models.TextChoices):
+    """ Роли пользователей """
     ADMIN = 'admin', _('admin')
     USER = 'user', _('user')
 
 
 class User(AbstractUser):
-    """
-    Модель представления класса Пользователь, наследуемая от абстрактного класса
-    """
+    """ Модель представления класса Пользователь, наследуемая от абстрактного класса """
     username = None  # исключение поля "username", так как вместо него будет использовано поле "email"
 
     first_name = models.CharField(max_length=150, verbose_name='Имя', **NULLABLE)
@@ -31,15 +30,11 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['first_name', 'last_name', 'phone', 'role']  # поля, которые будут запрашиваться при создании пользователя через команду createsuperuser
 
     def __str__(self):
-        """
-        Метод представления модели в виде строки
-        """
+        """ Метод представления модели в виде строки """
         return f"{self.email}"
 
     class Meta:
-        """
-        Метаданные модели
-        """
+        """ Метаданные модели """
         verbose_name = "пользователь"
         verbose_name_plural = 'пользователи'
 

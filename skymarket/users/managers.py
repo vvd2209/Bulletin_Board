@@ -1,14 +1,10 @@
-# Менеджер должен быть унаследован от следующего класса
 from django.contrib.auth.models import BaseUserManager
 
 
-# Менеджер должен содержать как минимум две следующие функции
 class UserManager(BaseUserManager):
-    """
-    функция создания пользователя — в нее мы передаем обязательные поля
-    """
 
     def create_user(self, email, first_name, last_name, phone, password=None):
+        """ Функция создания пользователя """
         if not email:
             raise ValueError('У пользователей должен быть адрес электронной почты')
         user = self.model(
@@ -25,11 +21,7 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, first_name, last_name, phone, password=None):
-        """
-        функция для создания суперпользователя — с ее помощью мы создаем админинстратора
-        это можно сделать с помощью команды createsuperuser
-        """
-
+        """ Функция для создания суперпользователя — с ее помощью мы создаем администратора """
         user = self.create_user(
             email,
             first_name=first_name,

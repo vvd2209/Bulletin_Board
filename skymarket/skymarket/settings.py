@@ -34,7 +34,6 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
-# TODO здесь тоже нужно подключить Swagger и corsheaders
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -87,7 +86,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "skymarket.wsgi.application"
 
-# TODO здесь мы настраиваем аутентификацию и пагинацию
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
@@ -96,7 +94,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ]
 }
-# TODO здесь мы настраиваем Djoser
+
 DJOSER = {
     'SERIALIZERS': {
         'user_create': 'users.serializers.UserRegistrationSerializer'
@@ -111,7 +109,6 @@ SIMPLE_JWT = {
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# TODO здесь необходимо настроить подключение к БД
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('DB_ENGINE'),
@@ -173,17 +170,6 @@ CORS_ALLOW_ALL_ORIGINS = True
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-
-# Include Email Backend
-# TODO эти переменные мы добавили чтобы помочь Вам настроить почтовый ящик на django.
-# TODO теперь Вам необходимо создать файл .env на основе .env.example
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_USE_TLS = True
-EMAIL_HOST = os.environ.get("EMAIL_HOST", "smtp.gmail.com")
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
-EMAIL_PORT = os.environ.get("EMAIL_PORT")
 
 
 AUTH_USER_MODEL = 'users.User'
