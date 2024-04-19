@@ -25,7 +25,7 @@ services:
     build: .
     tty: true
     command: >
-      sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+      sh -c "python skymarket/manage.py migrate && python skymarket/manage.py runserver 0.0.0.0:8000"
     ports:
       - '8000:8000'
     volumes:
